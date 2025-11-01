@@ -84,115 +84,123 @@ Les registres suivants sont exposés en lecture via Modbus RTU ou TCP. Les adres
 
 ### 🧮 Registres Modbus
 
-| Adresse   | Type      | Unité | Source TIC     | Description                          |
-|-----------|-----------|-------|----------------|--------------------------------------|
-| `0`       | U_DWORD   | Wh    | `EAST`         | Énergie totale soutirée              |
-| `4`       | U_DWORD   | Wh    | `EAIT`         | Énergie totale injectée              |
-| `10`      | U_DWORD   | Wh    | `EASF01`       | Énergie période 1 (HC)               |
-| `14`      | U_DWORD   | Wh    | `EASF02`       | Énergie période 2 (HP)               |
-| `20`      | U_DWORD   | Wh    | `EASF01`       | Énergie période 1 (EJP Normal)       |
-| `24`      | U_DWORD   | Wh    | `EASF02`       | Énergie période 2 (EJP Pointe)       |
-| `30`      | U_DWORD   | Wh    | `EASF01`       | Énergie période 1 (BLEU HC)          |
-| `34`      | U_DWORD   | Wh    | `EASF02`       | Énergie période 2 (BLEU HP)          |
-| `38`      | U_DWORD   | Wh    | `EASF03`       | Énergie période 3 (BLANC HC)         |
-| `42`      | U_DWORD   | Wh    | `EASF04`       | Énergie période 1 (BLANC HP)         |
-| `46`      | U_DWORD   | Wh    | `EASF05`       | Énergie période 2 (ROUGE HC)         |
-| `50`      | U_DWORD   | Wh    | `EASF06`       | Énergie période 3 (ROUGE HP)         |
-| `100`     | U_DWORD   | A     | `IRMS1`        | Courant phase 1                      |
-| `104`     | U_DWORD   | A     | `IRMS2`        | Courant phase 2                      |
-| `108`     | U_DWORD   | A     | `IRMS3`        | Courant phase 3                      |
-| `112`     | U_DWORD   | V     | `URMS1`        | Tension phase 1                      |
-| `118`     | U_DWORD   | V     | `URMS2`        | Tension phase 2                      |
-| `122`     | U_DWORD   | V     | `URMS3`        | Tension phase 3                      |
-| `124`     | U_DWORD   | VA    | `SINSTS`       | Puissance apparente instantanée      |
-| `128`     | U_DWORD   | VA    | `SMAXSN`       | Puissance max du jour (totale)       |
-| `132`     | U_DWORD   | VA    | `PCOUP`        | Puissance de coupure                 |
-| `136`     | U_DWORD   | kVA   | `PREF`         | Puissance de référence               |
-| `140`     | U_DWORD   | -     | `CCASN`        | Compteur de dépassement              |
-| `144`     | U_DWORD   | VA    | `SINST1`       | Puissance phase 1                    |
-| `148`     | U_DWORD   | VA    | `SINST2`       | Puissance phase 2                    |
-| `152`     | U_DWORD   | VA    | `SINST3`       | Puissance phase 3                    |
-| `156`     | U_DWORD   | VA    | `SMAXSN1`      | Puissance max phase 1                |
-| `160`     | U_DWORD   | VA    | `SMAXSN2`      | Puissance max phase 2                |
-| `164`     | U_DWORD   | VA    | `SMAXSN3`      | Puissance max phase 3                |
-| `170`     | STRING(8) | -     | `NGTF`         | Type de contrat                      |
-| `174`     | STRING(8) | -     | `LTARF`        | Tarif en cours                       |
-| `180`     | U_DWORD   | -     | `NTARF`        | Index tarifaire en cours             |
-| `184`     | U_DWORD   | -     | `NJOURF`       | Jour tarifaire actuel                |
-| `188`     | U_DWORD   | -     | `NJOURF+1`     | Jour tarifaire prévu demain          |
-| `192`     | STRING(8) | -     | `PJOURF+1`     | Profil tarifaire prévu demain        |
-| `196`     | STRING(8) | -     | `PPOINTE`      | Jour de pointe prévu demain          |
+| Adresse   | Type        | Unité   | Source TIC     | Description                            |
+|-----------|-------------|---------|----------------|----------------------------------------|
+| `0`       | `U_DWORD`   | `Wh`    | `EAST`         | Énergie totale soutirée                |
+| `4`       | `U_DWORD`   | `Wh`    | `EAIT`         | Énergie totale injectée                |
+| `10`      | `U_DWORD`   | `Wh`    | `EASF01`       | Énergie période 1 (`HC`)               |
+| `14`      | `U_DWORD`   | `Wh`    | `EASF02`       | Énergie période 2 (`HP`)               |
+| `20`      | `U_DWORD`   | `Wh`    | `EASF01`       | Énergie période 1 (`EJP Normal`)       |
+| `24`      | `U_DWORD`   | `Wh`    | `EASF02`       | Énergie période 2 (`EJP Pointe`)       |
+| `30`      | `U_DWORD`   | `Wh`    | `EASF01`       | Énergie période 1 (`BLEU HC`)          |
+| `34`      | `U_DWORD`   | `Wh`    | `EASF02`       | Énergie période 2 (`BLEU HP`)          |
+| `38`      | `U_DWORD`   | `Wh`    | `EASF03`       | Énergie période 3 (`BLANC HC`)         |
+| `42`      | `U_DWORD`   | `Wh`    | `EASF04`       | Énergie période 1 (`BLANC HP`)         |
+| `46`      | `U_DWORD`   | `Wh`    | `EASF05`       | Énergie période 2 (`ROUGE HC`)         |
+| `50`      | `U_DWORD`   | `Wh`    | `EASF06`       | Énergie période 3 (`ROUGE HP`)         |
+| `100`     | `U_DWORD`   | `A`     | `IRMS1`        | Courant phase 1                        |
+| `104`     | `U_DWORD`   | `A`     | `IRMS2`        | Courant phase 2                        |
+| `108`     | `U_DWORD`   | `A`     | `IRMS3`        | Courant phase 3                        |
+| `112`     | `U_DWORD`   | `V`     | `URMS1`        | Tension phase 1                        |
+| `118`     | `U_DWORD`   | `V`     | `URMS2`        | Tension phase 2                        |
+| `122`     | `U_DWORD`   | `V`     | `URMS3`        | Tension phase 3                        |
+| `124`     | `U_DWORD`   | `VA`    | `SINSTS`       | Puissance apparente instantanée        |
+| `128`     | `U_DWORD`   | `VA`    | `SMAXSN`       | Puissance max du jour (totale)         |
+| `132`     | `U_DWORD`   | `VA`    | `PCOUP`        | Puissance de coupure                   |
+| `136`     | `U_DWORD`   | `kVA`   | `PREF`         | Puissance de référence                 |
+| `140`     | `U_DWORD`   | `-`     | `CCASN`        | Compteur de dépassement                |
+| `144`     | `U_DWORD`   | `VA`    | `SINST1`       | Puissance phase 1                      |
+| `148`     | `U_DWORD`   | `VA`    | `SINST2`       | Puissance phase 2                      |
+| `152`     | `U_DWORD`   | `VA`    | `SINST3`       | Puissance phase 3                      |
+| `156`     | `U_DWORD`   | `VA`    | `SMAXSN1`      | Puissance max phase 1                  |
+| `160`     | `U_DWORD`   | `VA`    | `SMAXSN2`      | Puissance max phase 2                  |
+| `164`     | `U_DWORD`   | `VA`    | `SMAXSN3`      | Puissance max phase 3                  |
+| `170`     | `STRING(8)` | `-`     | `NGTF`         | Type de contrat                        |
+| `174`     | `STRING(8)` | `-`     | `LTARF`        | Tarif en cours                         |
+| `180`     | `U_DWORD`   | `-`     | `NTARF`        | Index tarifaire en cours               |
+| `184`     | `U_DWORD`   | `-`     | `NJOURF`       | Jour tarifaire actuel                  |
+| `188`     | `U_DWORD`   | `-`     | `NJOURF+1`     | Jour tarifaire prévu demain            |
+| `192`     | `STRING(8)` | `-`     | `PJOURF+1`     | Profil tarifaire prévu demain          |
+| `196`     | `STRING(8)` | `-`     | `PPOINTE`      | Jour de pointe prévu demain            |
 
 ## ⚙️ Valeurs possibles
 Valeurs possibles pour différents registres de type STRING
 
 ### ⚙️ NTARF : Index tarifaire en cours HC/HP
 
-| Code | Description |
-| 01   | HC          |
-| 02   | HP          |
+| Code   | Description |
+|--------|-------------|
+| `01`   | HC          |
+| `02`   | HP          |
 
 ### ⚙️ NTARF : Index tarifaire en cours EJP
 
-| Code | Description |
-| 01   | NORMAL      |
-| 02   | POINTE      |
+| Code   | Description |
+|--------|-------------|
+| `01`   | NORMAL      |
+| `02`   | POINTE      |
 
 ### ⚙️ NTARF : Index tarifaire en cours Tempo
 
-| Code | Description |
-| 01   | BLEU HC     |
-| 02   | BLEU HP     |
-| 03   | BLANC HC    |
-| 04   | BLANC HP    |
-| 05   | ROUGE HC    |
-| 06   | ROUGE HP    |
+| Code   | Description |
+|--------|-------------|
+| `01`   | BLEU HC     |
+| `02`   | BLEU HP     |
+| `03`   | BLANC HC    |
+| `04`   | BLANC HP    |
+| `05`   | ROUGE HC    |
+| `06`   | ROUGE HP    |
 
 ### ⚙️ NJOURF et NJOURF+1 : Jour tarifaire et Jour tarifaire prévu demain
 
-| Code | Description |
-| 01   | BLEU        |
-| 02   | BLANC       |
-| 03   | ROUGE       |
+| Code   | Description |
+|--------|-------------|
+| `01`   | BLEU        |
+| `02`   | BLANC       |
+| `03`   | ROUGE       |
 
 ### ⚙️ Valeurs possible pour PJOURF+1
 
-| Description |
-| BLEU HC     |
-| BLEU HP     |
-| BLANC HC    |
-| BLANC HP    |
-| ROUGE HC    |
-| ROUGE HP    |
+| Description   |
+|---------------|
+| `BLEU HC`     |
+| `BLEU HP`     |
+| `BLANC HC`    |
+| `BLANC HP`    |
+| `ROUGE HC`    |
+| `ROUGE HP`    |
 
 ### ⚙️ Valeurs possible pour PPOINTE
 
-| Code | Description              |
-| OUI  | Jour pointe prévu demain |
-| NON  | Jour normal prévu demain |
+| Code   | Description              |
+|--------|--------------------------|
+| `OUI`  | Jour pointe prévu demain |
+| `NON`  | Jour normal prévu demain |
 
 ### ⚙️ Valeurs possible pour NGTF (type de contrat)
 
-| Description |
-| BASE        |
-| HC/HP       |
-| EJP         |
-| TEMPO       |
+| Description   |
+|---------------|
+| `BASE`        |
+| `HC/HP`       |
+| `EJP`         |
+| `TEMPO`       |
 
 ### ⚙️ LTARF : tarifaire en cours
 
-| Description |
-| BASE        |
-| HC          |
-| HP          |
-| NORMAL      |
-| POINTE      |
-| BLEU HC     |
-| BLEU HP     |
-| BLANC HC    |
-| BLANC HP    |
-| ROUGE HC    |
-| ROUGE HP    |
+| Description   |
+|---------------|
+| `BASE`        |
+| `HC`          |
+| `HP`          |
+| `NORMAL`      |
+| `POINTE`      |
+| `BLEU HC`     |
+| `BLEU HP`     |
+| `BLANC HC`    |
+| `BLANC HP`    |
+| `ROUGE HC`    |
+| `ROUGE HP`    |
 
 ---
 
