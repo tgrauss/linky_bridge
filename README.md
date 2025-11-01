@@ -336,4 +336,11 @@ deactivate
 - Optionnel : convertisseur RS485 si Modbus RTU est activé
 
 
+###  ⚠️ Matériel de référence
+
+Dans le dossier schematic, vous trouverez :
+- Le schéma au format PDF du module électronique de référence. La carte est prévue de s'installer dans un boitier plastique 2 modules au format rail DIN
+- La nomenclature des des composants
+- Le fichier de fabrication Gerber
+
 ---
