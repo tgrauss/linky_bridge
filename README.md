@@ -264,13 +264,70 @@ packages:
 ```
 
 4. **Compilez et flashez votre firmware** :
+Si vous souhaitez compiler et flasher le firmware en ligne de commande, voici les étapes recommandées :
 
-- Depuis l’interface web ESPHome : cliquez sur “INSTALL” ou “UPLOAD”.
-- En ligne de commande :
+### 📦 Prérequis
+
+- Python 3.10 ou plus
+- `pip` installé
+- Accès au port série USB (ex. `/dev/ttyUSB0` ou `COM3`)
+
+---
+
+### 🐍 Création d’un environnement virtuel
+
+```bash
+# Créer un dossier de projet
+mkdir mon_esphome
+cd mon_esphome
+
+# Créer un environnement virtuel Python
+python3 -m venv .venv
+
+# Activer l’environnement
+source .venv/bin/activate  # Linux/macOS
+# .venv\Scripts\activate    # Windows
+
+# Installer ESPHome
+pip install esphome
+```
+
+---
+
+### ⚙️ Compilation et flash
+
+Placez votre fichier `mon_linky.yaml` dans le dossier, puis lancez :
 
 ```bash
 esphome run mon_linky.yaml
 ```
+
+ESPHome va :
+
+- Compiler le firmware
+- Flasher l’ESP32/ESP8266 via USB
+- Ou proposer une mise à jour OTA si déjà installé
+
+---
+
+### 🔁 Mise à jour
+
+Pour mettre à jour ESPHome :
+
+```bash
+pip install --upgrade esphome
+```
+
+---
+
+### 🧹 Désactivation de l’environnement
+
+Quand vous avez terminé :
+
+```bash
+deactivate
+```
+
 
 ---
 
