@@ -50,7 +50,7 @@ Ces substitutions permettent de personnaliser le composant `linky_bridge.yaml` s
 | `uart_rs485_stop_bits`    | Stop bits RS485 principal               | `1`               |
 | `uart_rs485_parity`       | Parité RS485 principal (`NONE`, `EVEN`, `ODD`) | `NONE`     |
 
-### 🧪 UART RS485 secondaire (optionnel)
+### 🧪 UART RS485 secondaire
 
 | Substitution                  | Description                             | Valeur par défaut |
 |-------------------------------|-----------------------------------------|-------------------|
