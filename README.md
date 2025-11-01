@@ -30,7 +30,7 @@ Ces substitutions permettent de personnaliser le composant `linky_bridge.yaml` s
 
 | Substitution        | Description                            | Valeur par défaut |
 |---------------------|----------------------------------------|-------------------|
-| `name`              | Nom du composant ESPHome               | `linky_bridge`    |
+| `name`              | Nom du composant ESPHome               | `linky-bridge`    |
 
 ### 📡 UART TIC
 
@@ -198,7 +198,7 @@ Valeurs possibles pour différents registres de type STRING
 
 ```yaml
 substitutions:
-  name: mon_linky
+  name: mon-linky
   uart_rs485_tx_pin: GPIO1
   uart_rs485_rx_pin: GPIO3
   modbus_flow_control_pin: GPIO4
@@ -234,7 +234,7 @@ Le composant est organisé dans un dossier `linky_bridge/` contenant :
 
 ```yaml
 substitutions:
-  name: linky_bridge
+  name: linky-bridge
   uart_tic_rx_pin: GPIO16
   uart_tic_tx_pin: GPIO17
   uart_rs485_tx_pin: GPIO13
