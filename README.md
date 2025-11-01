@@ -70,7 +70,7 @@ Ces substitutions permettent de personnaliser le composant `linky_bridge.yaml` s
 
 ## 🧮 Registres Modbus exposés
 
-Les registres suivants sont exposés en lecture via Modbus RTU ou TCP. Les adresses sont fixes et correspondent aux données issues du compteur Linky via téléinfo.
+Les registres suivants sont exposés en lecture via Modbus RTU. Les adresses sont fixes et correspondent aux données issues du compteur Linky via téléinfo.
 
 ### 🧮 Registres Modbus
 
