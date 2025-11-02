@@ -195,11 +195,6 @@ packages:
 
 ---
 
-## 📎 À propos
-
-Ce composant est conçu pour être simple à intégrer, modulaire et compatible avec les superviseurs industriels, Home Assistant, Domoticz, ou tout autre système Modbus/MQTT.  
-Pour toute contribution ou suggestion, ouvrez une issue ou une pull request sur le dépôt GitHub.
-
 ## 🛠️ Utilisation du composant
 
 ### 📁 Structure du dépôt
@@ -207,12 +202,15 @@ Pour toute contribution ou suggestion, ouvrez une issue ou une pull request sur 
 Le composant est organisé dans un dossier `linky_bridge/` contenant :
 
 - `linky_bridge.yaml` : le fichier principal à inclure dans votre configuration ESPHome
+- `linky_map.yaml` : le fichier contenant les sensors avec le contenu des étiquettes téléinfo
+- `modbus_map.yamp` : le fichier contenant les registres du bus modbus1
+- `modbus2_map.yamp` : le fichier contenant les registres du bus modbus2
 
 ---
 
 ### 📦 Intégration dans ESPHome
 
-1. **Copiez le dossier `linky_bridge/`** dans le dossier `config/` de votre projet ESPHome (là où se trouvent vos fichiers `.yaml`).
+1. **Copiez le dossier `linky_bridge/`** dans votre projet ESPHome (là où se trouvent vos fichiers `.yaml`).
 
 2. **Ajoutez les substitutions nécessaires** dans votre fichier principal `.yaml` :
 
@@ -230,7 +228,7 @@ substitutions:
 ```yaml
 wifi_ssid: "MonSSID"
 wifi_password: "MonMotDePasse"
-ota_pass: "qwerty123456"
+ota_pass: "motdepasseOTA"
 
 ```
 
@@ -312,9 +310,9 @@ deactivate
 ### ⚠️ Prérequis matériels
 
 - Un compteur Linky en mode standard
-- Un adaptateur téléinfo (TTL ou opto-isolé)
+- Un adaptateur téléinfo (opto-isolé)
 - Un ESP32 ou ESP8266 compatible avec UART et Modbus
-- Optionnel : convertisseur RS485 si Modbus RTU est activé
+- Un convertisseur RS485
 
 
 ###  ⚠️ Matériel de référence
