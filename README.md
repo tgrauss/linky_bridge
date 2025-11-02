@@ -1,6 +1,6 @@
 # 🔌 Linky Bridge – Composant ESPHome
 
-Un composant ESPHome modulaire en YAML pour exposer les données téléinfo Linky via Modbus RTU, MQTT ou ESP-NOW.  
+Un composant ESPHome modulaire en YAML pour exposer les données téléinfo Linky via Modbus RTU.  
 Compatible avec les contrats BASE, HC/HP, EJP et TEMPO.
 
 ---
@@ -202,8 +202,6 @@ substitutions:
   uart_rs485_tx_pin: GPIO1
   uart_rs485_rx_pin: GPIO3
   modbus_flow_control_pin: GPIO4
-  modbus_easf01_addr: "20"
-  modbus_sinsts_addr: "130"
 
 packages:
   linky: !include linky_bridge/linky_bridge.yaml
@@ -241,14 +239,11 @@ substitutions:
   uart_rs485_rx_pin: GPIO21
   modbus_flow_control_pin: GPIO14
 ```
-3. **Créer un fichier `secrets.yaml` à la racine de votre projet (avec votre fichier yaml). Il va contenir vos mots de passe et votre serveur mqtt
+3. **Créer un fichier `secrets.yaml` à la racine de votre projet (avec votre fichier yaml). Il va contenir vos mots de passe
 
 ```yaml
 wifi_ssid: "MonSSID"
 wifi_password: "MonMotDePasse"
-mqtt_user: "utilisateur"
-mqtt_pass: "mot_de_passe"
-mqtt_broker: "mon_broker_mqtt"
 ota_pass: "qwerty123456"
 
 ```

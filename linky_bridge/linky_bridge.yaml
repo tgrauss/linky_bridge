@@ -51,6 +51,8 @@ wifi:
     password: "fallback_password"
 
 api:
+  # Don't reboot if the HomeAssistant connection times out (we can do just fine without it)
+  reboot_timeout: 0s
 
 ota:
   - platform: esphome
@@ -109,13 +111,9 @@ modbus:
     send_wait_time: 200ms
     role: server
 
-mqtt:
-  broker: !secret mqtt_broker
-  username: !secret mqtt_user
-  password: !secret mqtt_pass
-  discovery: true
+#Definitions Etiquettes TIC
+<<: !include linky_map.yaml
 
-espnow:
-  auto_add_peer: true
-
+#Registres Modbus TIC
 <<: !include modbus_map.yaml
+<<: !include modbus2_map.yaml

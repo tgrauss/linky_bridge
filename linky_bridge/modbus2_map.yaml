@@ -1,7 +1,7 @@
 modbus_controller:
-  - id: modbus_slave
-    address: ${modbus_address}
-    modbus_id: modbus1
+  - id: modbus2_slave
+    address: ${modbus2_address}
+    modbus_id: modbus2
     server_registers:
       # 🔵 BASE
       - address: 0
