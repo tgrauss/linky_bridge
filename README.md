@@ -1,4 +1,4 @@
-# 🔌 Linky Bridge – Composant ESPHome
+# 🔌 Linky Modbus – Composant ESPHome
 
 Un composant ESPHome modulaire en YAML pour exposer les données téléinfo Linky via Modbus RTU.
 Compatible avec les contrats BASE, HC/HP, EJP et TEMPO.
@@ -6,18 +6,18 @@ Compatible avec les contrats BASE, HC/HP, EJP et TEMPO.
 ---
 
 ## ⚙️ Paramètres disponibles
-Le fichier `config_linky_bridge.yaml` contient l'appel aux différents packages avec leurs paramètres.
+Le fichier `config_linky_modbus.yaml` contient l'appel aux différents packages avec leurs paramètres.
 Vous pouvez le modifier si nécessaire. Par défaut, on va exposer les étiquettes téléinfo sur 2 bus rs485 en Modbus RTU mais vous pouvez également en enlever un en fonction des capacités de votre ESP32.
 
-### 📡 Paramètres Téléinfo : `packages_linky_bridge\teleinfo_map.yaml`
+### 📡 Paramètres Téléinfo : `packages_linky_modbus\teleinfo_map.yaml`
 
-| Substitution        | Description                        | Valeur par défaut |
-|---------------------|------------------------------------|-------------------|
-| `teleinfo_id`       | Nom de votre composant téléinfo    | `linky`           |
-| `rx_pin`            | Broche RX (GPIO)                   | `16`              |
-| `tx_pin`            | Broche TX (GPIO), non utilisé      | `17`              |
+| Substitution        | Description                                                                 | Valeur par défaut |
+|---------------------|-----------------------------------------------------------------------------|-------------------|
+| `teleinfo_id`       | Nom de votre composant téléinfo                                             | `linky`           |
+| `rx_pin`            | Broche RX (GPIO)                                                            | `16`              |
+| `alarm_pin`         | Broche alarme (GPIO). Permet d'alerter en cas de dépassement de puissance   | `17`              |
 
-### 🔌 Paramètres Modbus : `packages_linky_bridge\modbus_map.yaml`
+### 🔌 Paramètres Modbus : `packages_linky_modbus\modbus_map.yaml`
 
 | Substitution              | Description                             | Valeur par défaut |
 |---------------------------|-----------------------------------------|-------------------|
@@ -67,14 +67,14 @@ Les registres suivants sont exposés en lecture via Modbus RTU. Les adresses son
 | `44`      | `U_DWORD`   | `VA`    | `SMAXSN3`      | Puissance max phase 3                  |
 | `46`      | `U_DWORD`   | `VA`    | `PCOUP`        | Puissance de coupure                   |
 | `48`      | `U_WORD`    | `kVA`   | `PREF`         | Puissance de référence                 |
-| `49`      | `U_DWORD`   | `-`     | `CCASN`        | Compteur de dépassement                |
-| `50`      | `U_WORD`    | `-`     | `NTARF`        | Index tarifaire en cours               |
-| `51`      | `U_WORD`    | `-`     | `NJOURF`       | Jour tarifaire actuel                  |
-| `52`      | `U_WORD`    | `-`     | `NJOURF+1`     | Jour tarifaire prévu demain            |
-| `53`      | `U_QWORD`   | `-`     | `NGTF`         | Type de contrat                        |
-| `57`      | `U_QWORD`   | `-`     | `LTARF`        | Tarif en cours                         |
-| `61`      | `U_QWORD`   | `-`     | `PJOURF+1`     | Profil tarifaire prévu demain          |
-| `65`      | `U_QWORD`   | `-`     | `PPOINTE`      | Jour de pointe prévu demain            |
+| `49`      | `U_DWORD`   | `W`     | `CCASN`        | Puissance Active Soutirée              |
+| `51`      | `U_WORD`    | `-`     | `NTARF`        | Index tarifaire en cours               |
+| `52`      | `U_WORD`    | `-`     | `NJOURF`       | Jour tarifaire actuel                  |
+| `53`      | `U_WORD`    | `-`     | `NJOURF+1`     | Jour tarifaire prévu demain            |
+| `54`      | `U_QWORD`   | `-`     | `NGTF`         | Type de contrat                        |
+| `58`      | `U_QWORD`   | `-`     | `LTARF`        | Tarif en cours                         |
+| `62`      | `U_QWORD`   | `-`     | `PJOURF+1`     | Profil tarifaire prévu demain          |
+| `66`      | `U_QWORD`   | `-`     | `PPOINTE`      | Jour de pointe prévu demain            |
 
 ## ⚙️ Valeurs possibles
 Valeurs possibles pour différents registres de type STRING
@@ -158,20 +158,20 @@ Valeurs possibles pour différents registres de type STRING
 ---
 
 ## 🧪 Exemple d’intégration avec substitutions
-Téléchargez le composant et notemment le dossier `linky_bridge`. Créez un fichier secrets.yaml pour stocker vos mots de passe. Voir l'exemple dans le dossier `test` pour un exemple pratique. Dans votre fichier, appelez votre fichier `config_linky_bridge.yaml` avec un `package`.
-Ci-dessous, un exemple de contenu du fichier `config_linky_bridge.yaml`
+Téléchargez le composant et notemment le dossier `linky_modbus`. Créez un fichier secrets.yaml pour stocker vos mots de passe. Voir les exemples dans le dossier `examples` pour un exemple pratique. Dans votre fichier, appelez votre fichier `config_linky_modbus.yaml` avec un `package`.
+Ci-dessous, un exemple de contenu du fichier `config_linky_modbus.yaml`
 
 ```yaml
 packages:
   teleinfo: !include
-    file: packages_linky_bridge/teleinfo_map.yaml
+    file: packages_linky_modbus/teleinfo_map.yaml
     vars:
       teleinfo_id: linky
       tx_pin: 17
       rx_pin: 16
 
   modbus1: !include
-    file: packages_linky_bridge/modbus_map.yaml
+    file: packages_linky_modbus/modbus_map.yaml
     vars:
       bus_id: 1
       bus_address: 100
@@ -184,7 +184,7 @@ packages:
       teleinfo_id: linky
 
   modbus2: !include
-    file: packages_linky_bridge/modbus_map.yaml
+    file: packages_linky_modbus/modbus_map.yaml
     vars:
       bus_id: 2
       bus_address: 100
@@ -204,9 +204,9 @@ packages:
 
 ### 📁 Structure du dépôt
 
-Le composant est organisé dans un dossier `linky_bridge/` contenant :
-- `config_linky_bridge.yaml` : le fichier contenant votre configuration téléinfo
-- `packages_linky_bridge` : le dossier contenant les fichiers du package linky_bridge
+Le composant est organisé dans un dossier `linky_modbus/` contenant :
+- `config_linky_modbus.yaml` : le fichier contenant votre configuration téléinfo
+- `packages_linky_modbus` : le dossier contenant les fichiers du package linky_modbus
 - `modbus_map.yaml` : le fichier contenant le paramétrage modbus
 - `teleinfo_map.yaml` : le fichier exposant les étiquettes téléinfo
 
@@ -214,9 +214,9 @@ Le composant est organisé dans un dossier `linky_bridge/` contenant :
 
 ### 📦 Intégration dans ESPHome
 
-1. **Copiez le dossier `linky_bridge/`** dans votre projet ESPHome.
+1. **Copiez le dossier `linky_modbus/`** dans votre projet ESPHome.
 
-2. **Modifiez le fichier `config_linky_bridge.yaml`** dans votre fichier principal `.yaml`.
+2. **Modifiez le fichier `config_linky_modbus.yaml`** dans votre fichier principal `.yaml`.
 
 3. **Créez un fichier `secrets.yaml`** à la racine de votre projet (avec votre fichier yaml). Il va contenir vos mots de passe. Vous trouverez un exemple dans le dossier `test`, dans le fichier `secrets.example.yaml`.
 

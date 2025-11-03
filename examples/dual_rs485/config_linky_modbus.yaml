@@ -1,13 +1,13 @@
 packages:
   teleinfo: !include
-    file: packages_linky_bridge/teleinfo_map.yaml
+    file: packages_linky_modbus/teleinfo_map.yaml
     vars:
       teleinfo_id: linky
-      tx_pin: 17
       rx_pin: 16
+      alarm_pin: 17
 
   modbus1: !include
-    file: packages_linky_bridge/modbus_map.yaml
+    file: packages_linky_modbus/modbus_map.yaml
     vars:
       bus_id: 1
       bus_address: 100
@@ -20,7 +20,7 @@ packages:
       teleinfo_id: linky
 
   modbus2: !include
-    file: packages_linky_bridge/modbus_map.yaml
+    file: packages_linky_modbus/modbus_map.yaml
     vars:
       bus_id: 2
       bus_address: 100

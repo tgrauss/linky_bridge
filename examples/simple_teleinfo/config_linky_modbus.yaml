@@ -1,0 +1,21 @@
+packages:
+  teleinfo: !include
+    file: packages_linky_modbus/teleinfo_map.yaml
+    vars:
+      teleinfo_id: linky
+      rx_pin: 39
+      alarm_pin: 16
+
+  modbus: !include
+    file: packages_linky_modbus/modbus_map.yaml
+    vars:
+      bus_id: 1
+      bus_address: 100
+      baud_rate: 9600
+      tx_pin: 17
+      rx_pin: 8
+      flow_control_pin: 18
+      stop_bits: 1
+      parity: NONE
+      teleinfo_id: linky
+

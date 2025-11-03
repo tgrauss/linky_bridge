@@ -15,4 +15,4 @@ packages:
       timezone: Europe/Paris
 
   teleinfo: !include
-    file: config_linky_bridge.yaml
+    file: config_linky_modbus.yaml
