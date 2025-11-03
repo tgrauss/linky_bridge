@@ -167,7 +167,7 @@ packages:
     file: packages_linky_modbus/teleinfo_map.yaml
     vars:
       teleinfo_id: linky
-      tx_pin: 17
+      alarm_pin: 17
       rx_pin: 16
 
   modbus1: !include
